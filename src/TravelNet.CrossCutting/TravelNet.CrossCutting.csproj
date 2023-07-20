@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TravelNet.Application\TravelNet.Application.csproj" />
+    <ProjectReference Include="..\TravelNet.Data\TravelNet.Data.csproj" />
+    <ProjectReference Include="..\TravelNet.Domain\TravelNet.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
