@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TravelNet.Data.DataContext;
 using TravelNet.Domain.Entities;
-using TravelNet.Domain.Interfaces;
+using TravelNet.Domain.Interfaces.Repositories;
 
 namespace TravelNet.Data.RepositoyGeneric
 {
@@ -50,6 +50,23 @@ namespace TravelNet.Data.RepositoyGeneric
                 throw new Exception(ex.Message);
             }
             return item;
+        }
+
+        public async Task<ICollection<T>> List()
+        {
+            try
+            {
+                return await _values
+                    .AsNoTracking()
+                    .Take(100)
+                    .ToListAsync();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task<T> SelectAsync(Guid id)

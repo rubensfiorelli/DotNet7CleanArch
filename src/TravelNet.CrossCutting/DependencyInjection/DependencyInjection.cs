@@ -1,7 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TravelNet.Application.Services;
 using TravelNet.Data.DataContext;
+using TravelNet.Data.RepositoyGeneric;
+using TravelNet.Domain.Interfaces.Repositories;
+using TravelNet.Domain.Interfaces.Services;
 
 namespace TravelNet.CrossCutting.DependencyInjection
 {
@@ -17,12 +21,12 @@ namespace TravelNet.CrossCutting.DependencyInjection
 
 
             //Repositories
-            //services.AddScoped(typeof(IEventoRepository), typeof(EventoRepository));
+            services.AddScoped(typeof(IRepositoryGeneric<>), typeof(BaseRpository<>));
 
 
 
             //Services
-            //services.AddScoped(typeof(ILeadsService), typeof(LeadsService));
+            services.AddScoped(typeof(IClienteService), typeof(ClienteService));
 
 
             return services;

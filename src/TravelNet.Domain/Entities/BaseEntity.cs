@@ -10,7 +10,7 @@ namespace TravelNet.Domain.Entities
         private List<Notification> _notifications;
 
         [Key]
-        public Guid Id { get; protected set; }
+        public Guid Id { get; set; }
 
         private DateTime? _createAt;
 

@@ -12,7 +12,7 @@ namespace TravelNet.Data.DataContext
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<SelfServiceSale> SelfieServiceSales { get; set; }
-        public DbSet<Voo> Voos { get; set; }
+        public DbSet<CodigoVoo> Voos { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
