@@ -1,0 +1,17 @@
+[
+  {
+    "nome": "string",
+    "sobrenome": "string",
+    "nascimento": "2023-07-21T21:07:13.686",
+    "cpf": "string",
+    "email": "string",
+    "whatsApp": "string",
+    "descricao": "string",
+    "passaporte": "string",
+    "produtos": null,
+    "id": "3a7f7d85-1ad2-4cbc-8273-850f02c9a2a3",
+    "createAt": "2023-07-21T21:07:13.686",
+    "updateAt": "2023-07-21T21:07:13.686",
+    "notifications": null
+  }
+]

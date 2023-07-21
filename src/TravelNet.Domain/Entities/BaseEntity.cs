@@ -7,7 +7,7 @@ namespace TravelNet.Domain.Entities
 {
     public abstract class BaseEntity : IValidations
     {
-        private List<Notification> _notifications;
+        private List<Notification>? _notifications;
 
         [Key]
         public Guid Id { get; set; }
@@ -32,7 +32,7 @@ namespace TravelNet.Domain.Entities
 
 
         [NotMapped]
-        public IReadOnlyCollection<Notification> Notifications => _notifications;
+        public IReadOnlyCollection<Notification>? Notifications => _notifications;
 
         protected void SetNotifications(List<Notification> notifications)
         {
