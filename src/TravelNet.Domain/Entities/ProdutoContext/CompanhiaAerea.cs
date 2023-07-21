@@ -27,6 +27,11 @@ namespace TravelNet.Domain.Entities.ProdutoContext
                 _ = "Id invalido";
         }
 
+        public override void SetDescricao(string descricao)
+        {
+            base.SetDescricao(descricao);
+        }
+
         public static void UpdateCompanhiaAerea(string descricao, string nome, string voo)
         {
             if (string.IsNullOrWhiteSpace(descricao) || string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(voo))

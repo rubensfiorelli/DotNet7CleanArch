@@ -3,13 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 using TravelNet.Domain.Notifications;
 using TravelNet.Domain.Validations.Interfaces;
 
-namespace TravelNet.Domain.Entities.ProdutoContext
+namespace TravelNet.Domain.Entities.ClienteContext
 {
-
-
     public abstract class BaseEntity : IValidations
     {
-
         private List<Notification> _notifications;
 
         [Key]
@@ -17,7 +14,7 @@ namespace TravelNet.Domain.Entities.ProdutoContext
 
         private DateTime? _createAt;
 
-        protected BaseEntity(DateTime? createAt, DateTime? updateAt, string descricao, string nome)
+        protected BaseEntity(DateTime? createAt, DateTime? updateAt, string descricao, string nome, string sobrenome, DateTime nascimento, string cPF, string email, string whatsApp)
         {
             Id = Guid.NewGuid();
             CreateAt = createAt;
@@ -25,6 +22,11 @@ namespace TravelNet.Domain.Entities.ProdutoContext
             UpdateAt = updateAt;
             Descricao = descricao;
             Nome = nome;
+            Sobrenome = sobrenome;
+            Nascimento = nascimento;
+            CPF = cPF;
+            Email = email;
+            WhatsApp = whatsApp;
         }
 
         public DateTime? CreateAt
@@ -33,7 +35,14 @@ namespace TravelNet.Domain.Entities.ProdutoContext
             set { _createAt = value == null ? DateTime.UtcNow : value; }
         }
         public DateTime? UpdateAt { get; set; }
+
+
         public string Nome { get; private set; }
+        public string Sobrenome { get; private set; }
+        public DateTime Nascimento { get; private set; }
+        public string CPF { get; private set; }
+        public string Email { get; private set; }
+        public string WhatsApp { get; private set; }
         public string Descricao { get; private set; }
 
         [NotMapped]
@@ -50,6 +59,8 @@ namespace TravelNet.Domain.Entities.ProdutoContext
         }
 
         public abstract bool Validation();
+
+
 
     }
 }

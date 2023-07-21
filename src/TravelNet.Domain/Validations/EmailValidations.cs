@@ -1,4 +1,5 @@
-﻿using TravelNet.Domain.Notifications;
+﻿using System.Text.RegularExpressions;
+using TravelNet.Domain.Notifications;
 
 namespace TravelNet.Domain.Validations
 {
@@ -6,7 +7,9 @@ namespace TravelNet.Domain.Validations
     {
         public ContractValidations<T> EmailIsValid(string email, string message, string propertyName)
         {
-            if (string.IsNullOrEmpty(email))
+
+            if (string.IsNullOrEmpty(email) || !Regex.IsMatch(email, @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"))
+
                 AddNotification(new Notification(message, propertyName));
 
             return this;

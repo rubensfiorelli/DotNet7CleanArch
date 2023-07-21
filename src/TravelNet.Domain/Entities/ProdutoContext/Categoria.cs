@@ -18,6 +18,12 @@ namespace TravelNet.Domain.Entities.ProdutoContext
                 _ = "Id invalido";
         }
 
+        public override void SetDescricao(string descricao)
+        {
+            base.SetDescricao(descricao);
+        }
+
+
         public override bool Validation()
         {
             var contracts = new ContractValidations<Categoria>()
