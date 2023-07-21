@@ -6,22 +6,24 @@ namespace TravelNet.Domain.Entities.ProdutoContext
 {
     public sealed class Produto : BaseEntity, IContract
     {
-        public Produto(DateTime? createAt, DateTime? updateAt, string descricao, string nome, bool ativo,
-               decimal valor, Item item, ICollection<Categoria> categorias, Guid clienteId)
-               : base(createAt, updateAt, descricao, nome)
+        public Produto(DateTime? createAt, DateTime? updateAt, bool ativo, decimal valor, Item item, string descricao, string nome, Guid clienteId)
+               : base(createAt, updateAt)
         {
             Ativo = ativo;
             Valor = valor;
             Item = item;
-            Categorias = categorias;
+            Descricao = descricao;
+            Nome = nome;
             ClienteId = clienteId;
         }
 
         public bool Ativo { get; private set; }
         public decimal Valor { get; private set; }
         public Item Item { get; private set; }
+        public string Descricao { get; private set; }
+        public string Nome { get; private set; }
         public Guid ClienteId { get; private set; }
-        public ICollection<Categoria> Categorias { get; set; }
+        public ICollection<Categoria>? Categorias { get; set; }
 
         public void Desativar() => Ativo = false;
         public void AlterarItem(Item item) => Item = item;
@@ -31,9 +33,9 @@ namespace TravelNet.Domain.Entities.ProdutoContext
                 _ = "Descricao Ivalida";
         }
 
-        public override void SetDescricao(string descricao)
+        public void SetDescricao(string descricao)
         {
-            base.SetDescricao(descricao);
+            SetDescricao(descricao);
         }
 
         public override bool Validation()

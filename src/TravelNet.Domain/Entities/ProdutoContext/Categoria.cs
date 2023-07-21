@@ -5,12 +5,17 @@ namespace TravelNet.Domain.Entities.ProdutoContext
 {
     public sealed class Categoria : BaseEntity, IContract
     {
-        public Categoria(DateTime? createAt, DateTime? updateAt, string descricao, string nome)
-            : base(createAt, updateAt, descricao, nome)
+        public Categoria(DateTime? createAt, DateTime? updateAt, string descricao, string nome, Guid produtoId)
+            : base(createAt, updateAt)
         {
+            Descricao = descricao;
+            Nome = nome;
+            ProdutoId = produtoId;
         }
 
         public Guid ProdutoId { get; private set; }
+        public string Descricao { get; private set; }
+        public string Nome { get; private set; }
 
         public static void GuidIsValid(object guid)
         {
@@ -18,9 +23,9 @@ namespace TravelNet.Domain.Entities.ProdutoContext
                 _ = "Id invalido";
         }
 
-        public override void SetDescricao(string descricao)
+        public void SetDescricao(string descricao)
         {
-            base.SetDescricao(descricao);
+            SetDescricao(descricao);
         }
 
 

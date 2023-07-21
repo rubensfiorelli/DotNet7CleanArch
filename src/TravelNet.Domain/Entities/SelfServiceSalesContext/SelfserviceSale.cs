@@ -6,11 +6,11 @@ using TravelNet.Domain.Validations.Interfaces;
 
 namespace TravelNet.Domain.Entities.SelfServiceSalesContext
 {
-    public sealed class SelfserviceSale : BaseEntity, IContract
+    public sealed class SelfServiceSale : BaseEntity, IContract
     {
-        public SelfserviceSale(DateTime? createAt, DateTime? updateAt, string descricao, Guid categoriaId,
+        public SelfServiceSale(DateTime? createAt, DateTime? updateAt, string descricao, Guid categoriaId,
             Guid companhiaAereaId, DateTime dataEmissao, Destino destino, DateTime saida, DateTime chegada,
-            Guid vooId) : base(createAt, updateAt, descricao)
+            Guid vooId) : base(createAt, updateAt)
         {
             CategoriaId = categoriaId;
             CompanhiaAereaId = companhiaAereaId;
@@ -19,12 +19,14 @@ namespace TravelNet.Domain.Entities.SelfServiceSalesContext
             Saida = saida;
             Chegada = chegada;
             VooId = vooId;
+
         }
 
         public Guid CategoriaId { get; private set; }
         public Categoria? Categoria { get; set; }
         public Guid CompanhiaAereaId { get; private set; }
         public CompanhiaAerea? CompanhiaAerea { get; set; }
+        public string Descricao { get; private set; }
         public DateTime DataEmissao { get; private set; }
         public Destino Destino { get; private set; }
         public DateTime Saida { get; private set; }
@@ -49,7 +51,9 @@ namespace TravelNet.Domain.Entities.SelfServiceSalesContext
             return contracts.IsValid();
         }
 
-        public static void UpdateCompanhiaAerea(string descricao, string nome, string voo)
+        public static void UpdateSelfServiceSale(DateTime? createAt, DateTime? updateAt, string descricao, Guid categoriaId,
+            Guid companhiaAereaId, DateTime dataEmissao, Destino destino, DateTime saida, DateTime chegada,
+            Guid vooId)
         {
 
         }

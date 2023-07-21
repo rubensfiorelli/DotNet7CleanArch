@@ -5,16 +5,19 @@ namespace TravelNet.Domain.Entities.ProdutoContext
 {
     public sealed class CompanhiaAerea : BaseEntity, IContract
     {
-        public CompanhiaAerea(DateTime? createAt, DateTime? updateAt, string descricao, string nome, Guid categoriaId, string voo)
-               : base(createAt, updateAt, descricao, nome)
+        public CompanhiaAerea(DateTime? createAt, DateTime? updateAt, Guid categoriaId, bool ativa, string voo, string nome, string descricao)
+               : base(createAt, updateAt)
         {
-            Ativa = true;
-            CategoriaId = categoriaId;
+            Ativa = ativa;
             Voo = voo;
+            Nome = nome;
+            Descricao = descricao;
         }
 
         public bool Ativa { get; private set; }
         public string Voo { get; private set; }
+        public string Nome { get; private set; }
+        public string Descricao { get; private set; }
         public Guid CategoriaId { get; private set; }
         public Categoria? Categoria { get; set; }
 
@@ -27,12 +30,12 @@ namespace TravelNet.Domain.Entities.ProdutoContext
                 _ = "Id invalido";
         }
 
-        public override void SetDescricao(string descricao)
+        public void SetDescricao(string descricao)
         {
-            base.SetDescricao(descricao);
+            SetDescricao(descricao);
         }
 
-        public static void UpdateCompanhiaAerea(string descricao, string nome, string voo)
+        public static void UpdateCompanhiaAerea(string descricao, string nome, string voo, bool ativa, Guid categoriaId)
         {
             if (string.IsNullOrWhiteSpace(descricao) || string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(voo))
                 _ = "Dados invalidos";
